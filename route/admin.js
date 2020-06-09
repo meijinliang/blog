@@ -14,7 +14,14 @@ admin.get('/logout', require('./admin/logout'));
 //创建用户编辑页面
 admin.get('/user-edit', require('./admin/user-edit'));
 //创建实现用户添加功能路由
-admin.post('/user-edit',require('./admin/user-edit-fn'))
+admin.post('/user-edit', require('./admin/user-edit-fn'));
+//创建实现用户修改功能路由
+admin.post('/user-modify', require('./admin/user-modify'));
+
+admin.get('/article', require('./admin/article'));
+
+admin.get('/article-edit', require('./admin/article-edit'));
+
 //将路由对象做为模块成员进行导出
 module.exports = admin;
 //admin路由模块完成

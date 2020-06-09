@@ -39,7 +39,14 @@ app.use('/admin', admin);
 app.use((err, req, res, next) => {
     //next()传过来的参数其实就是err的实参  将字符串转换为对象
     const result = JSON.parse(err);
-    res.redirect(`${result.path}?message=${result.message}`);
+    let params = [];
+    for (let attr in result) {
+        if (attr != 'path') {
+            params.push (attr + '=' + result[attr]);
+            
+        }
+    }
+    res.redirect(`${result.path}?${params.join('&')}`);
 })
 //监听端口
 app.listen(80);
